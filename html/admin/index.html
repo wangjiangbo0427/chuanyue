@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CES</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style>
+		*{margin: 0;padding:0;}
+		li{list-style-type:none;}
+		.header h1{
+			text-align: center;
+			padding: 50px 20px;
+			margin: 0;
+			color: #fff;
+			background-color: #2a6496;
+		}
+		.ul{
+			width: 300px;
+			text-align: center;
+			padding-top: 40px;
+			background-color: #eee;
+			margin: 0;
+			position: absolute;
+			left: 0;
+			height: 400px;
+		}
+		.ul a{
+			color: #666;
+			display: block;
+			line-height: 36px;
+		}
+		.ul a:hover{
+			color:#333;
+		}
+		.table{
+			padding-top: 40px;
+			padding-left:300px;
+			float: left;
+			height: 400px;
+			border-collapse:separate;
+		}
+		.p{
+			width: 100%;
+			float: left;
+			padding-left: 300px;
+		}
+		.p button{
+			float: right;
+		}
+		.forms{
+			width: 400px;
+			padding: 20px;
+			height: 500px;
+			background-color: #999;
+			text-align: center;
+			position:fixed;
+			z-index: 1;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			display: none;
+		}
+		.zhezhao{
+			width: 100%;
+			height: 100%;
+			background-color: #333;
+			opacity: 0.8;
+			position: absolute;
+			display: none;
+		}
+	</style>
+	<script src="../../jquery.min.js"></script>
+	<script>
+		$(function (){
+			var http = new XMLHttpRequest();
+			http.open("GET","http:127.0.0.1:81/getNewdata");
+			http.send();
+			http.onreadystatechange = function (){
+				if (http.readyState == 4 && http.status == 200) {
+					var data = JSON.parse(http.responseText);
+					
+				}
+			}
+		})
+	</script>
+</head>
+<body>
+	<header class="header">
+		<h1>CES后台管理系統</h1>
+	</header>
+	
+	<section style="position: relative;">
+		<ul class="ul">
+			<li><a href="">传悦观点文章</a></li>
+			<li><a href="">传悦观点内容</a></li>
+			<li><a href="">传悦观点图片</a></li>
+			<li><a href="">传悦观点标题</a></li>
+			<li><a href="">传悦观点日期</a></li>
+			<li><a href="">传悦观点地点</a></li>
+			<li><a href="">传悦观点ID名</a></li>
+		</ul>
+		<p class="p"><button type="button" class="btn btn-primary btn_fr">创建内容</button></p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>标题</th>
+					<th>内容</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for = "item of news">
+					<td class="id">{{item.id}}</td>
+					<td class="title">{{item.title}}</td>
+					<td class="details">{{item.details}}</td>
+					<td class="details">{{item.date}}</td>
+					<td>
+						<button type="button" class="btn btn-primary">添加</button>
+						<button type="button" class="btn btn-danger">删除</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<form>
+		<div class="forms">
+			<p">
+			    <label for="text">观点标题</label>
+			    <input type="text" class="form-control" id="exampleInputEmail1">
+			</p>
+			<p>
+			    <label for="textarea">观点内容</label>
+			    <input style="height: 300px;" type="textarea" class="form-control" id="exampleInputEmail1">
+			</p>
+			<button type="button" class="btn btn-primary btn_fr">确定提交</button>
+			<button type="button" class="btn btn-danger btn_fr">取消</button>
+		</div>
+	</form>
+</body>
+</html>

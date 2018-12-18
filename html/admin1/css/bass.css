@@ -1,0 +1,57 @@
+html,body{
+	height: 100%;
+}
+.biaoti{
+	padding:50px 30px;
+	background-color:#337ab7;
+	color:#fff;
+	font-size: 30px;
+}
+.fl{
+	float: left;
+	height: 100%;
+	line-height: 34px;
+	width: 200px;
+	background: #e3e3e3;
+	position: absolute;
+	padding: 60px;
+	box-sizing: border-box;
+}
+.fr{
+	float: left;
+	width: 100%;
+	padding:20px 20px 0 220px;
+}
+.anniu{
+	float: right;
+}
+.center{
+	text-align:center;
+}
+#tem{
+	display: none;
+}
+.popup{
+	width: 700px;
+	background: #fff;
+	padding: 15px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	display: none;
+}
+.mask{
+	background-color:#333;
+	opacity:.7;
+	position:absolute;
+	width:100%;
+	height:100%;
+	display: none;
+}
+.input input{
+	background: #f9f9f9 !important;
+}
+.input:hover input{
+	background: #f5f5f5 !important;
+}
